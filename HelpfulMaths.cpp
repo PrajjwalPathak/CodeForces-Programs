@@ -1,45 +1,29 @@
 #include<iostream>
+#include<vector>
+#include<algorithm>
 
 using namespace std;
 
 int main() {
-    int i, j, count=0;
-    int a[20];
+
+    int i, j;
     string s;
     cin>>s;
-    
-    if(s.length() == 1) {
+    vector<int> a;
+    if(s.length() == 1 || s.length() == 2) {
         cout<<s;
     }
     else {
-        cout<<s.length()<<"\n";
-        for(i=0; i<s.length(); i++) {
-            if(s[i] == '+') {
-                count++;
-            }
+        for(i=0; i<s.length(); i = i+2) {
+            a.push_back(s[i]);
         }
-        cout<<count<<"\n";
-        for(i=0; i<s.length(); i++) {
-            if(s[i] != '+') {
-                for(j=0; j<s.length()-count; j++) {
-                
-                    a[j] = s[i];
-                }
-            }
+        sort(a.begin(), a.end());
+        j = 0;
+        for(i=0; i<s.length(); i = i+2) {
+            s[i] = a[j];
+            j++;
         }
-        for(j=0; j<s.length()-count; j++) {
-            cout<<a[j]<<" ";
-        }
-        
-        /*int temp;
-        for(i=0; i<a.size(); i++) {
-            if(a[i]>a[i+1]) {
-                temp = a[i+1];
-                a[i+1] = a[i];
-                a[i] = temp;
-            }
-            cout<<a[i]<<" ";
-        }*/
+        cout<<s;
     }
     
     return 0;
