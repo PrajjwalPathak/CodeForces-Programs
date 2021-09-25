@@ -2,41 +2,27 @@
 
 using namespace std;
 
-int isNotPrime(int a) {
+int isComposite(int n) {
     int i = 2;
-    if(a == 1 || a == 2 || a == 3) {
-        return 0;
-    }
-    else {
-        while(a--) {
-        if(a%i == 0) {
-            return 0;
-            break;
-            
-        }
-        else {
+    while(i<=n/2) {
+        if(n%i == 0) {
             return 1;
+            break;
         }
         i++;
-        }
     }
     return 0;
 }
 
 int main() {
 
-    int n, a = 4;
+    int n, i;
     cin>>n;
-    while(a<=n) {
-        if(isNotPrime(a) && isNotPrime(n-a)) {
-            cout<<a<<" "<<n-a;
+    for(i=4; i<=n; i++) {
+        if(isComposite(i) && isComposite(n-i)) {
+            cout<<i<<" "<<n-i;
             break;
         }
-        else {
-            a++;
-            continue;
-        }
-        
     }
     
     return 0;
